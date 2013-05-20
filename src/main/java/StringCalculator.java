@@ -40,6 +40,8 @@ public class StringCalculator {
         int len = ar.length;
         int sum=0;
         int a;
+        boolean ex = false;
+        String list ="";
         for(int i=0;i<len; i++){
             if(ar[i].equals(""))
             {
@@ -47,15 +49,18 @@ public class StringCalculator {
             }
             else{
                 a= Integer.parseInt(ar[i]);
-                if (a==-1)
-                    throw new IllegalArgumentException("number is not negative");
+                if (a<0){
+                    list= list + a + " ";
+                    ex=true;
+                }
                 else
                 if (a<1000)
                     sum=sum + Integer.parseInt(ar[i]);
 
             }
-
         }
+        if (ex)
+            throw new IllegalArgumentException("numbers is negative: "+ list);
         return sum;
     }
 }

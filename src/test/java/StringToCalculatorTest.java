@@ -35,14 +35,15 @@ public class StringToCalculatorTest {
         Assert.assertEquals(3,st.add("1\n,2"));
     }
     @Test (expected = IllegalArgumentException.class)
-    public void test6() throws Exception {
+    public void test6(){
         StringCalculator st = new StringCalculator();
         try{
-            Assert.assertEquals(1,st.add("-1\n,"));
+            Assert.assertEquals(1,st.add("-1\n-2,-3,1"));
         }
         catch (IllegalArgumentException e)
         {
-            throw new IllegalArgumentException("number is not negative");
+            Assert.assertEquals("numbers is negative: -1 -2 -3 ",e.getMessage().toString());
+            throw new IllegalArgumentException("");
         }
     }
     @Test
